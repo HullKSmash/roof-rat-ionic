@@ -1,0 +1,180 @@
+[
+    {
+        "route1": [
+            {
+                "id": 1,
+                "routeId": 1,
+                "name": "Mission Dolores",
+                "mile": 0,
+                "image": "https://images.unsplash.com/photo-1452784444945-3f422708fe5e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60",
+                "description": "Description goes here"
+            },
+            {
+                "id": 2,
+                "routeId": 1,
+                "name": "Union Square",
+                "mile": 3.25,
+                "image": "https://images.unsplash.com/photo-1452784444945-3f422708fe5e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60",
+                "description": "Description goes here"
+            },
+            {
+                "id": 3,
+                "routeId": 1,
+                "name": "Dragon's Gate",
+                "mile": 3.5,
+                "image": "https://images.unsplash.com/photo-1452784444945-3f422708fe5e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60",
+                "description": "Description goes here"
+            },
+            {
+                "id": 4,
+                "routeId": 1,
+                "name": "Coit Tower",
+                "mile": 5.3,
+                "image": "https://images.unsplash.com/photo-1452784444945-3f422708fe5e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60",
+                "description": "Description goes here"
+            },
+            {
+                "id": 5,
+                "routeId": 1,
+                "name": "Pier 39",
+                "mile": 6.25,
+                "image": "https://images.unsplash.com/photo-1452784444945-3f422708fe5e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60",
+                "description": "Description goes here"
+            },
+            {
+                "id": 6,
+                "routeId": 1,
+                "name": "Fisherman's Wharf",
+                "mile": 6.5,
+                "image": "https://images.unsplash.com/photo-1452784444945-3f422708fe5e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60",
+                "description": "Description goes here"
+            },
+            {
+                "id": 7,
+                "routeId": 1,
+                "name": "Alcatraz",
+                "mile": 9,
+                "image": "https://images.unsplash.com/photo-1452784444945-3f422708fe5e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60",
+                "description": "Description goes here"
+            },
+            {
+                "id": 8,
+                "routeId": 1,
+                "name": "Golden Gate Bridge",
+                "mile": 11,
+                "image": "https://images.unsplash.com/photo-1452784444945-3f422708fe5e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60",
+                "description": "Description goes here"
+            },
+            {
+                "id": 9,
+                "routeId": 1,
+                "name": "Ocean Beach",
+                "mile": 15.5,
+                "image": "https://images.unsplash.com/photo-1452784444945-3f422708fe5e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60",
+                "description": "Description goes here"
+            },
+            {
+                "id": 10,
+                "routeId": 1,
+                "name": "Golden Gate Park",
+                "mile": 16,
+                "image": "https://images.unsplash.com/photo-1452784444945-3f422708fe5e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60",
+                "description": "Description goes here"
+            },
+            {
+                "id": 11,
+                "routeId": 1,
+                "name": "Bison Paddock",
+                "mile": 16.5,
+                "image": "https://images.unsplash.com/photo-1452784444945-3f422708fe5e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60",
+                "description": "Description goes here"
+            },
+            {
+                "id": 12,
+                "routeId": 1,
+                "name": "De Young/Academy of Sciences",
+                "mile": 18,
+                "image": "https://images.unsplash.com/photo-1452784444945-3f422708fe5e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60",
+                "description": "Description goes here"
+            },
+            {
+                "id": 13,
+                "routeId": 1,
+                "name": "Haight Street",
+                "mile": 20.25,
+                "image": "https://images.unsplash.com/photo-1452784444945-3f422708fe5e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60",
+                "description": "Description goes here"
+            },
+            {
+                "id": 14,
+                "routeId": 1,
+                "name": "Castro Theater",
+                "mile": 22,
+                "image": "https://images.unsplash.com/photo-1452784444945-3f422708fe5e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60",
+                "description": "Description goes here"
+            },
+            {
+                "id": 15,
+                "routeId": 1,
+                "name": "The Fillmore",
+                "mile": 1.75,
+                "image": "https://images.unsplash.com/photo-1452784444945-3f422708fe5e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60",
+                "description": "Description goes here"
+            },
+            {
+                "id": 16,
+                "routeId": 1,
+                "name": "Twin Peaks",
+                "mile": 24,
+                "image": "https://images.unsplash.com/photo-1452784444945-3f422708fe5e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60",
+                "description": "Description goes here"
+            },
+            {
+                "id": 17,
+                "routeId": 1,
+                "name": "Japantown",
+                "mile": 2,
+                "image": "https://images.unsplash.com/photo-1452784444945-3f422708fe5e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60",
+                "description": "Description goes here"
+            }
+        ],
+        "route2": [
+            {}
+        ],
+        "route3": [
+            {
+                "id": 18,
+                "routeId": 3,
+                "name": "Churchill Downs",
+                "mile": 0,
+                "image": "https://images.unsplash.com/photo-1578082775190-25b6b9abc839?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60",
+                "description": "Churchill Downs is the location of the Kentucky Derby."
+            },
+            {
+                "id": 19,
+                "routeId": 3,
+                "name": "Brown Hotel",
+                "mile": 3,
+                "image": "https://images.unsplash.com/photo-1470337458703-46ad1756a187?ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60",
+                "description": "The Brown Hotel is a historic site with top-class mixologists.  Here's how the pros make an Old Fashioned: ..."
+            },
+            {
+                "id": 20,
+                "routeId": 3,
+                "name": "Bulleit Distillery",
+                "mile": 30,
+                "image": "https://images.unsplash.com/photo-1571104508999-893933ded431?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60",
+                "description": "Bulleit Rye is particularly delicious."
+            },
+            {
+                "id": 21,
+                "routeId": 3,
+                "name": "Keeneland Race Track",
+                "mile": 70,
+                "image": "https://images.unsplash.com/photo-1510417769558-3ba40dfb4a70?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60",
+                "description": "Keeneland race track is a race track near Lexington.  Here's their recipe for a mint julep."
+            }
+        ]
+    }
+
+]

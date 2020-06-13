@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Route Progress</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <span *ngIf="this.finished"><h3>You finished {{route.name}}<br>Kick back and celebrate.</h3>
+        <p><b>Distance logged:</b>{{distanceLogged | number: '1.0-2'}}</p>
+        <p><b>Percent complete:</b> 100%</p>
+    </span>
+    <span *ngIf="!this.finished">
+        <p><b>Distance logged:</b> {{distanceLogged | number: '1.0-2'}}</p>
+        <p><b>Percent complete:</b> {{percentComplete | number: '.0'}}%</p>
+    </span>
+</div>
+<div>
+<p>Either landmark list goes here, or link to it from here</p>
+</div>
+    <ion-button routerLink="./landmark-list">See landmarks</ion-button>
+</ion-content>

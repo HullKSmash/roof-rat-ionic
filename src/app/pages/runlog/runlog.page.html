@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Run Log</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<div>
+<form [formGroup]="runForm" id="newRun" (ngSubmit)="onSubmit()" #formDirective="ngForm">
+  <ion-list>
+    <ion-item>
+      <ion-label position="floating">Distance</ion-label>
+      <ion-input type="text" formControlName="newRunDistanceCtrl" placeholder="e.g. 2.25" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Date</ion-label>
+      <ion-datetime type="datetime" formControlName="newRunDateCtrl" required></ion-datetime>
+    </ion-item>
+  </ion-list>
+  <ion-row>
+    <ion-col>
+      <ion-button type="submit" expand="block">Submit</ion-button>
+    </ion-col>
+  </ion-row>
+</form>
+</div>
+
+<div>
+  <ion-list>
+    <ion-item-sliding *ngFor="let run of runHistory; let i=index">
+      {{run.distance}} miles on {{run.date | date:'mediumDate'}}        <ion-button (click)="deleteRun(i)">Delete</ion-button>
+      <ion-item-options>
+        <ion-button (click)="deleteRun(i)">Delete</ion-button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+</div>
+
+</ion-content>

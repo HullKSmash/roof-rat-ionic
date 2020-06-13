@@ -1,0 +1,7 @@
+{
+  "name": "roofrat",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
