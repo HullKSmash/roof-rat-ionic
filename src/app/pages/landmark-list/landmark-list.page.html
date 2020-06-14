@@ -9,14 +9,13 @@
 
 <ion-content>
   <h4>Here are the landmarks you've passed so far.  Keep logging runs to see more!</h4>
-  <ion-button routerLink='./landmark'>Landmark details test</ion-button>
+  <ion-button routerLink='./landmark/1'>Landmark details test</ion-button>
   <hr>
-  <p>List will go here</p>
   <div>
-    <ion-card *ngFor="let landmark of landmarks">
+    <ion-card *ngFor="let landmark of landmarksList">
       <img src="{{landmark.image}}">
-      <ion-card-title>{{landmark.mile == 0 ? 'Start' : landmark.mile + ' Miles'}}</ion-card-title>
-      <ion-card-subtitle>{{landmark.mile}} </ion-card-subtitle>
+      <ion-card-title>{{landmark.name}}</ion-card-title>
+      <ion-card-subtitle>{{landmark.mile == 0 ? 'Start' : landmark.mile + ' Miles'}}</ion-card-subtitle>
       <ion-card-content>{{landmark.description.substring(0,50) + '...'}}</ion-card-content>
       <ion-button [routerLink]="['./landmark', landmark.id]">See Details</ion-button>
     </ion-card>

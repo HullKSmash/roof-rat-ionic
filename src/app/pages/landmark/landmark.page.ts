@@ -16,7 +16,7 @@ export class LandmarkPage implements OnInit {
     private RunProviderService: RunProviderService) { }
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
+     this.route.params.subscribe(params => {
       console.log(params.id);
     this.RunProviderService.getLandmark(params.id).subscribe(landmark => {
         this.landmark = landmark;
@@ -24,7 +24,6 @@ export class LandmarkPage implements OnInit {
       console.log(this.landmark);
     });
 
-//    this.RunProviderService.getLandmark(this.landmarkId);
     //In server/API land, get landmark by ID in the query
     //In client land, load landmark object
   }

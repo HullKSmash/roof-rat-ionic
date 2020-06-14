@@ -9,7 +9,7 @@ const routes: Routes = [
     component: LandmarkListPage
   },
   {
-    path: 'landmark/',//add ID here
+    path: 'landmark/:id',//add ID here
     loadChildren: () => import('../landmark/landmark.module').then(m => m.LandmarkPageModule)
   }
 ];

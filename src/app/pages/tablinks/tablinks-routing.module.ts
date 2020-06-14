@@ -53,7 +53,7 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: 'progress',//maybe this is where to redirect?
+        redirectTo: 'progress',
         pathMatch: 'full'
       }
     ]

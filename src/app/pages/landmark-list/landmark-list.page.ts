@@ -20,7 +20,6 @@ export class LandmarkListPage implements OnInit {
 
     this.runProviderService.getLandmarksList()
       .subscribe(landmarksList => this.landmarksList = landmarksList);
-
   }
 
 }
