@@ -6,7 +6,7 @@ import { RouteProgress } from 'src/app/routeProgress';
 import { Landmark } from 'src/app/landmark';
 import * as landmarksData from 'src/app/model/data/landmarksData.json';
 import * as routesData from 'src/app/model/data/routesData.json';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -207,19 +207,13 @@ export class RunProviderService {
     // (user viewing landmarks without new progress) vs. 
     //  needing to pull it fresh (user logs a new run)
     this.landmarksList = [];
-//    let routeIdentifier = "route" + this.routeProgress.routeId;
+    let routeIdentifier = "route" + this.routeProgress.routeId;
     //iterate over landmarks list, adding each with mile < distance logged to this array
-    let params = new HttpParams;
-    params.append("routeId", this.routeProgress.routeId.toString());
-    params.append("distance",this.routeProgress.distanceLogged.toString());
-    this.http.get<Array<Landmark>>('http://localhost:5000/api/landmarks', {
-      params: params,
-      responseType: "json"})
-    .subscribe(landmarks => {
-      landmarks.forEach(landmark => this.landmarksList.push(landmark));
-      this.landmarksList.sort((a, b) => {
-        return a.id - b.id;
-      });
+    
+    (landmarksData as any).default[0][routeIdentifier].forEach(landmark => {
+      if (landmark.mile <= this.routeProgress.distanceLogged) {
+        this.landmarksList.push(landmark);
+      }
     });
     //Sort landmarks by mile
     this.landmarksList.sort((a, b) => {
