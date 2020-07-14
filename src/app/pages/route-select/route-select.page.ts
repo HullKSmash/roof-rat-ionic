@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RunProviderService } from 'src/app/model/run-provider.service';
 import { Route } from 'src/app/route';
 import { RouteProgress } from 'src/app/routeProgress';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-route-select',
@@ -12,9 +13,11 @@ export class RouteSelectPage implements OnInit {
 
   availableRoutes: Array<Route>;
   routeProgress: RouteProgress;
+  testRoute: Route;
 
   constructor(
     private runProviderService: RunProviderService,
+    private http: HttpClient
   ) { }
 
   ngOnInit() {
@@ -27,7 +30,7 @@ export class RouteSelectPage implements OnInit {
     this.runProviderService.getAvailableRoutes()
       .subscribe(routes => this.availableRoutes = routes);
     console.log(this.availableRoutes);
-    this.availableRoutes.forEach(route => console.log(route.length));
+//    this.availableRoutes.forEach(route => console.log(route.length));
 //    console.log(this.availableRoutes);
   }
 

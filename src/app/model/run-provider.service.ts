@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Observable, of} from 'rxjs';
+import { Observable, of, Subject} from 'rxjs';
 import { Run } from 'src/app/run';
 import { Route } from 'src/app/route';
 import { RouteProgress } from 'src/app/routeProgress';
 import { Landmark } from 'src/app/landmark';
 import * as landmarksData from 'src/app/model/data/landmarksData.json';
 import * as routesData from 'src/app/model/data/routesData.json';
+import { HttpClient, HttpParams } from '@angular/common/http';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -15,25 +17,12 @@ export class RunProviderService {
   availableRoutes: Array<Route>;
   runHistory: Array<Run>;
   routeProgress: RouteProgress;
-
+  routeProgressChange: Subject<RouteProgress> = new Subject<RouteProgress>();
+  landmarksList: Array<Landmark>;
   landmarksData: Array<any>;
 
-  constructor() {
-    /*[
-    {
-      id: 1,
-      name: "San Francisco",
-      length: 24,
-      image:"https://images.unsplash.com/photo-1445294812422-0bb9cb94c286?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60",
-      description: "Hippies and hoodies and once a week or so you eat a burrito"
-    },
-    {
-      id: 2,
-      name: "Boston",
-      length: 30,
-      image: "https://images.unsplash.com/photo-1501979376754-2ff867a4f659?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60",
-      description: "Not just a tea party"
-    }];*/
+  constructor(private http: HttpClient) {
+
    }
 
    //If working off local storage, make calculations about route progress here
@@ -43,7 +32,14 @@ export class RunProviderService {
 
   getAvailableRoutes(): Observable<Array<Route>> {
     this.availableRoutes = [];
-    (routesData as any).default.forEach(route => this.availableRoutes.push(route));
+//    (routesData as any).default.forEach(route => this.availableRoutes.push(route));
+    this.http.get<Array<Route>>('http://localhost:5000/api/routes', {responseType: "json"})
+    .subscribe(routes => {
+      routes.forEach(route => this.availableRoutes.push(route));
+      this.availableRoutes.sort((a, b) => {
+        return a.id - b.id;
+      });
+    });
     console.log(this.availableRoutes);
     return of(this.availableRoutes);
   }
@@ -97,10 +93,10 @@ export class RunProviderService {
     //Check for finish
     if (this.calculateDistanceLogged(this.runHistory) >= this.routeProgress.routeLength) {
       this.routeProgress = this.finishRoute(this.routeProgress);
-    }else {
+    } else {
       this.routeProgress.distanceLogged = this.calculateDistanceLogged(this.runHistory);
-
       this.routeProgress.percentComplete = this.calculatePercentComplete(this.routeProgress.distanceLogged, this.routeProgress.routeLength);  
+      this.routeProgressChange.next(this.routeProgress);//Send this update to observers
     }
 
     this.updateLocalStorage("roofrat_runHistory", this.runHistory);
@@ -124,6 +120,7 @@ export class RunProviderService {
     if (this.calculateDistanceLogged(this.runHistory) >= this.routeProgress.routeLength) {
       this.routeProgress = this.finishRoute(this.routeProgress);
     } else {
+      //these aren't updating on the UI right away
       //update distanceLogged
       this.routeProgress.distanceLogged = this.calculateDistanceLogged(this.runHistory);
       //update percentComplete
@@ -205,19 +202,30 @@ export class RunProviderService {
   }
 
   getLandmarksList(): Observable<any> {
-    let landmarksList = [];
-    let routeIdentifier = "route" + this.routeProgress.routeId;
+    //update to call API with route ID and distance
+    //Split off returning this list without needing a server call/fresh calculation 
+    // (user viewing landmarks without new progress) vs. 
+    //  needing to pull it fresh (user logs a new run)
+    this.landmarksList = [];
+//    let routeIdentifier = "route" + this.routeProgress.routeId;
     //iterate over landmarks list, adding each with mile < distance logged to this array
-    (landmarksData as any).default[0][routeIdentifier].forEach(landmark => {
-      if (landmark.mile <= this.routeProgress.distanceLogged) {
-        landmarksList.push(landmark);
-      }
+    let params = new HttpParams;
+    params.append("routeId", this.routeProgress.routeId.toString());
+    params.append("distance",this.routeProgress.distanceLogged.toString());
+    this.http.get<Array<Landmark>>('http://localhost:5000/api/landmarks', {
+      params: params,
+      responseType: "json"})
+    .subscribe(landmarks => {
+      landmarks.forEach(landmark => this.landmarksList.push(landmark));
+      this.landmarksList.sort((a, b) => {
+        return a.id - b.id;
+      });
     });
     //Sort landmarks by mile
-    landmarksList.sort((a, b) => {
+    this.landmarksList.sort((a, b) => {
       return a.mile - b.mile;
     });
-    return of(landmarksList);
+    return of(this.landmarksList);
   }
 
   getLandmark(landmarkId): Observable<Landmark> {

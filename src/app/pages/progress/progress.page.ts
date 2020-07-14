@@ -14,15 +14,23 @@ export class ProgressPage implements OnInit {
   percentComplete: number;
   routeLength: number;
 
-  constructor(
-    private runProviderService: RunProviderService
-    ) {
-     }
+  constructor(private runProviderService: RunProviderService) {
+//    this.runProviderService.routeProgressChange.subscribe({
+//      next: (data) => console.log('Progress page receives from service: ' + data.distanceLogged)
+//    })
+  }
+
 
   ngOnInit() {
     //get route progress on init
     //if done, conditional in HTML to show "finished" experience
     //if not done, show "in progress" UI - also a conditional in HTML
+    this.runProviderService.routeProgressChange.subscribe(routeProgress => {
+      this.distanceLogged = routeProgress.distanceLogged;
+      this.finished = routeProgress.finished;
+      this.percentComplete = routeProgress.percentComplete;
+      this.routeLength = routeProgress.routeLength;
+    });
     this.getRouteProgress();
   }
 
