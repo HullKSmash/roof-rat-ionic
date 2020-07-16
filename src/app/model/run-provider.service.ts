@@ -22,24 +22,14 @@ export class RunProviderService {
   landmarksData: Array<any>;
 
   constructor(private http: HttpClient) {
-
-   }
-
+  }
    //If working off local storage, make calculations about route progress here
    //Assume one route, one user; use run history to determine progress etc on the fly
-
    //If working off the server, the server will make all those calculations and return them via API
 
   getAvailableRoutes(): Observable<Array<Route>> {
     this.availableRoutes = [];
-//    (routesData as any).default.forEach(route => this.availableRoutes.push(route));
-    this.http.get<Array<Route>>('http://localhost:5000/api/routes', {responseType: "json"})
-    .subscribe(routes => {
-      routes.forEach(route => this.availableRoutes.push(route));
-      this.availableRoutes.sort((a, b) => {
-        return a.id - b.id;
-      });
-    });
+    (routesData as any).default.forEach(route => this.availableRoutes.push(route));
     console.log(this.availableRoutes);
     return of(this.availableRoutes);
   }
@@ -209,7 +199,6 @@ export class RunProviderService {
     this.landmarksList = [];
     let routeIdentifier = "route" + this.routeProgress.routeId;
     //iterate over landmarks list, adding each with mile < distance logged to this array
-    
     (landmarksData as any).default[0][routeIdentifier].forEach(landmark => {
       if (landmark.mile <= this.routeProgress.distanceLogged) {
         this.landmarksList.push(landmark);

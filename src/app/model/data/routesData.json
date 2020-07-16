@@ -1,23 +1,16 @@
 [
-{
-    "id": 3,
-    "name": "Kentucky's Bourbon Trail",
-    "length": 75,
-    "image": "https://images.unsplash.com/photo-1555733909-86bf08864e2f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60",
-    "description": "Celebrate the creation of bourbon with a lot of running from Louisville to Lexington"
-},
-{
-    "id": 2,
-    "name": "Haunted New Orleans",
-    "length": 35,
-    "image": "https://images.unsplash.com/photo-1571893544028-06b07af6dade?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60",
-    "description": "Get your beads ready for a spooky run around the French Quarter"
-},
-{
-    "id": 1,
-    "name": "San Francisco",
-    "length": 25,
-    "image":"https://images.unsplash.com/photo-1445294812422-0bb9cb94c286?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60",
-    "description": "Hippies, hoodies, and avocado toast"
-}
-]
+    {
+        "id": 1,
+        "name": "San Francisco",
+        "length": 25,
+        "image":"https://images.unsplash.com/photo-1445294812422-0bb9cb94c286?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60",
+        "description": "Hippies, hoodies, and avocado toast"
+    },
+    {
+        "id": 2,
+        "name": "Philadelphia",
+        "length": 19,
+        "image": "https://images.unsplash.com/photo-1544295699-624f04212074?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80",
+        "description": "A city alive with art, music, food, and landmarks of U.S. history and culture."
+    }
+    ]
