@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RunProviderService } from 'src/app/model/run-provider.service';
+import { Landmark } from 'src/app/landmark';
 
 @Component({
   selector: 'app-progress',
@@ -13,6 +14,7 @@ export class ProgressPage implements OnInit {
   finished: Boolean;
   percentComplete: number;
   routeLength: number;
+  routeName: string;
 
   constructor(private runProviderService: RunProviderService) {
 //    this.runProviderService.routeProgressChange.subscribe({
@@ -45,6 +47,8 @@ export class ProgressPage implements OnInit {
       this.routeLength = routeProgress.routeLength;
     })
   }
+
+  //Need to get route name - look it up from routes based on ID from progress
 
   restartRoute() {
     this.runProviderService.clearRouteProgress();

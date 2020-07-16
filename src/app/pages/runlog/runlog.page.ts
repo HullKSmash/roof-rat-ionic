@@ -21,7 +21,7 @@ export class RunlogPage implements OnInit {
 
   finished: Boolean;
 
-  @ViewChild('formDirective', null) private formDirective: NgForm;
+  @ViewChild('formDirective', {}) private formDirective: NgForm;
   
   constructor(    
     private fb: FormBuilder,

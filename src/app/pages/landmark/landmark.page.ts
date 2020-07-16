@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RunProviderService } from 'src/app/model/run-provider.service';
+import { Landmark } from 'src/app/landmark';
 
 @Component({
   selector: 'app-landmark',
@@ -10,7 +11,7 @@ import { RunProviderService } from 'src/app/model/run-provider.service';
 export class LandmarkPage implements OnInit {
 
   landmarkId: number;
-  landmark: Object;
+  landmark: Landmark;
 
   constructor(private route: ActivatedRoute, 
     private RunProviderService: RunProviderService) { }
