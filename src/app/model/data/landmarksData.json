@@ -192,23 +192,23 @@
                 "routeId": 2,
                 "name": "Barnes Foundation",
                 "mile": 2.8,
-                "image": "https://images.unsplash.com/photo-1452784444945-3f422708fe5e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60",
-                "description": "Description goes here"
+                "image": "https://images.unsplash.com/photo-1524014444623-194fde519952?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+                "description": "The Barnes Foundation holds thousands of paintings and other works of art.  It was established by Albert C. Barnes, who had a lot of opinions about what would happen to the collection after his death.  Some of these stipulations proved to form a challenge to keeping the foundation alive, like limiting the availability of the museum to visitors, and to be respectfully revisited."
             },
             {
                 "id": 29,
                 "routeId": 2,
-                "name": "Academy of Fine Arts",
+                "name": "Pennyslvania Academy of the Fine Arts",
                 "mile": 3.7,
-                "image": "https://images.unsplash.com/photo-1452784444945-3f422708fe5e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60",
-                "description": "Description goes here"
+                "image": "https://cdn.pixabay.com/photo/2017/06/16/22/58/art-2410613__480.jpg",
+                "description": "The PAFA was the first art museum and school in the U.S., founded in 1805.  The Academy made particular contributions to women's growing involvement in art in the mid-1800s.  Women were given exclusive access to work spaces at specific times and were later allowed to work from live nude models of both genders - a controversial allowance at the time.  "
             },
             {
                 "id": 30,
                 "routeId": 2,
                 "name": "Reading Terminal",
                 "mile": 3.9,
-                "image": "https://images.unsplash.com/photo-1452784444945-3f422708fe5e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60",
+                "image": "https://cdn.pixabay.com/photo/2017/07/23/17/42/reading-terminal-market-2532030__480.jpg",
                 "description": "Description goes here"
             },
             {
@@ -216,7 +216,7 @@
                 "routeId": 2,
                 "name": "African American Museum of Philadelphia",
                 "mile": 4.2,
-                "image": "https://images.unsplash.com/photo-1452784444945-3f422708fe5e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60",
+                "image": "https://images.unsplash.com/photo-1592530392525-9d8469678dac?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
                 "description": "Description goes here"
             },
             {
@@ -224,7 +224,7 @@
                 "routeId": 2,
                 "name": "Edgar Allan Poe House",
                 "mile": 4.5,
-                "image": "https://images.unsplash.com/photo-1452784444945-3f422708fe5e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60",
+                "image": "https://images.unsplash.com/photo-1550229055-4ad2531aa9dc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
                 "description": "Description goes here"
             },
             {
@@ -232,7 +232,7 @@
                 "routeId": 2,
                 "name": "U.S. Mint",
                 "mile": 5.5,
-                "image": "https://images.unsplash.com/photo-1452784444945-3f422708fe5e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60",
+                "image": "https://images.unsplash.com/photo-1579267130459-500e662b083a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
                 "description": "Description goes here"
             },
             {
@@ -248,7 +248,7 @@
                 "routeId": 2,
                 "name": "Benjamin Franklin's Grave",
                 "mile": 6,
-                "image": "https://images.unsplash.com/photo-1452784444945-3f422708fe5e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60",
+                "image": "https://cdn.pixabay.com/photo/2012/10/25/23/17/benjamin-franklin-62846__340.jpg",
                 "description": "Description goes here"
             },
             {
@@ -256,7 +256,7 @@
                 "routeId": 2,
                 "name": "Betsey Ross House",
                 "mile": 6.1,
-                "image": "https://images.unsplash.com/photo-1452784444945-3f422708fe5e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60",
+                "image": "https://images.unsplash.com/photo-1478995222776-1b46bd4551dc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
                 "description": "Description goes here"
             },
             {
@@ -264,7 +264,7 @@
                 "routeId": 2,
                 "name": "Liberty Bell",
                 "mile": 6.5,
-                "image": "https://images.unsplash.com/photo-1452784444945-3f422708fe5e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60",
+                "image": "https://images.unsplash.com/photo-1566832957638-dab4c15d1cd7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
                 "description": "Description goes here"
             },
             {
@@ -320,7 +320,7 @@
                 "routeId": 2,
                 "name": "City Hall",
                 "mile": 9,
-                "image": "https://images.unsplash.com/photo-1452784444945-3f422708fe5e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60",
+                "image": "https://images.unsplash.com/photo-1517009572053-93fb56dfef49?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
                 "description": "Description goes here"
             }
         ],
