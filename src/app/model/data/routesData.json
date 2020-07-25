@@ -4,13 +4,13 @@
         "name": "San Francisco",
         "length": 25,
         "image":"https://images.unsplash.com/photo-1445294812422-0bb9cb94c286?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60",
-        "description": "Hippies, hoodies, and avocado toast"
+        "description": "From the Gold Rush through the Summer of Love, San Francisco's dynamic history and culture is celebrated in its ecelectic landmarks."
     },
     {
         "id": 2,
         "name": "Philadelphia",
         "length": 19,
         "image": "https://images.unsplash.com/photo-1544295699-624f04212074?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80",
-        "description": "A city alive with art, music, food, and landmarks of U.S. history and culture."
+        "description": "Philadelphia was at the center of the formation of the United States.  On top of its rich socio-political history, the city has had a worldwide influence on the arts and holds top-notch educational institutions."
     }
-    ]
+]

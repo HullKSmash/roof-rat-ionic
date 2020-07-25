@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonTabs } from '@ionic/angular';
+import { IonTabs, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tablinks',
@@ -8,23 +8,26 @@ import { IonTabs } from '@ionic/angular';
 })
 export class TablinksPage implements OnInit {
  
+  constructor(
+    public navController: NavController
+  ) { }
+
+  ngOnInit() { }
+
   @ViewChild('tabs') tabs: IonTabs;
-
-  resetStackTabs = ['indox', 'tasks'];
   
-  handleTabClick = (event: MouseEvent) => {
-    const {tab} = event.composedPath().find((element: any) => 
-    element.tagName === 'ION-TAB-BUTTON') as EventTarget & {tab: string};
-    if (this.resetStackTabs.includes(tab) && 
-        this.tabs.outlet.canGoBack(1, tab)) {
-          event.stopImmediatePropagation();
-          return this.tabs.outlet.pop(1, tab);
-        }
+  async handleTabClick (tab: string, event: MouseEvent) {
+    const tabSelected = this.tabs.getSelected();
+    event.stopImmediatePropagation();
+    event.preventDefault();
+    return tabSelected != tab 
+      ? await this.navController.navigateRoot(this.tabs.outlet.tabsPrefix + '/' + tab)
+      : this.tabs.select(tab);
   }
 
-  constructor() { }
-
-  ngOnInit() {
+  tabChanged() {
   }
+
+
 
 }

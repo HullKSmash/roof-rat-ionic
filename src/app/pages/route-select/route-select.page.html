@@ -21,7 +21,7 @@
         <ion-card-subtitle>{{route.length}} Miles</ion-card-subtitle>
       </ion-card-header>
       <ion-card-content>
-        Short description goes here; make button swap out this page for progress 
+        {{route.description}} 
         <div>
           <ion-button routerLink="/tablinks" (click)="startRoute(route.id)">Start this route</ion-button>
         </div>

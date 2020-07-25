@@ -5,17 +5,16 @@
 </ion-header>
 
 <ion-content>
-  <div>
-    <span *ngIf="this.finished"><h3>You finished PUT ROUTE NAME HERE<br>Kick back and celebrate.</h3>
-        <p><b>Distance logged:</b>{{distanceLogged | number: '1.0-2'}}</p>
-        <p><b>Percent complete:</b> 100%</p>
+  <div class="ion-text-center">
+    <span *ngIf="this.finished"><h3>You finished {{routeName}}!<br>Kick back and celebrate.</h3>
+        <p><b>Distance logged: </b>{{distanceLogged | number: '1.0-2'}}</p>
+        <p><b>Percent complete: </b> 100%</p>
     </span>
-    <span *ngIf="!this.finished">
+    <span *ngIf="!this.finished"><h3>{{routeName}}</h3>
         <p><b>Distance logged:</b> {{distanceLogged | number: '1.0-2'}}</p>
         <p><b>Percent complete:</b> {{percentComplete | number: '.0'}}%</p>
     </span>
-</div>
-<div>
-</div>
     <ion-button routerLink="./landmark-list">See landmarks</ion-button>
+</div>
+
 </ion-content>

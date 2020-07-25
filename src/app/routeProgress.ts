@@ -1,8 +1,9 @@
 import { Run } from 'src/app/run';
 
-export interface RouteProgress {
-    userId: number,
-    routeId: number,
+export class RouteProgress {
+    userId: number;
+    routeId: number;
+    routeName: string;
     finished: Boolean;
     distanceLogged: number;
     routeLength: number;

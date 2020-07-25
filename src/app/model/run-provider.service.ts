@@ -7,6 +7,7 @@ import { Landmark } from 'src/app/landmark';
 import * as landmarksData from 'src/app/model/data/landmarksData.json';
 import * as routesData from 'src/app/model/data/routesData.json';
 import { HttpClient } from '@angular/common/http';
+import { RouteSelectPageRoutingModule } from '../pages/route-select/route-select-routing.module';
 
 @Injectable({
   providedIn: 'root'
@@ -34,30 +35,34 @@ export class RunProviderService {
     return of(this.availableRoutes);
   }
 
-  getRouteLengthById(routeId: number): Observable<number> {
-    let routeLength;
+  getRouteInfoById(routeId: number): Observable<any> {
+    let routeInfo = {routeName: "", routeLength: 0};
+
     for (let route of this.availableRoutes) {
       if (route.id == routeId) {
-        routeLength = route.length;
+        routeInfo.routeName = route.name;
+        routeInfo.routeLength = route.length;
         break;
       }
     }
-    return of(routeLength);
+    return of(routeInfo);
   }
 
   startRoute(routeId: number, userId: number): Observable<RouteProgress> {
-    let routeLength;
-    this.getRouteLengthById(routeId)
-      .subscribe(routeMiles => routeLength = routeMiles);
-    //create user/route obj
-    this.routeProgress = {
-      userId: userId,
-      routeId: routeId,
-      finished: false,
-      distanceLogged: 0,
-      routeLength: routeLength,
-      percentComplete: 0
-    };
+    this.getRouteInfoById(routeId)
+      .subscribe(routeInfo => {
+        this.routeProgress = {
+          userId: userId,
+          routeId: routeId,
+          routeName: routeInfo.routeName,
+          finished: false,
+          distanceLogged: 0,
+          routeLength: routeInfo.routeLength,
+          percentComplete: 0
+        }
+      });
+
+    console.log(this.routeProgress);
     //send the above to an API endpoint that will store it
     //set a runHistory obj
     this.runHistory = [];

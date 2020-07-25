@@ -45,6 +45,7 @@ export class ProgressPage implements OnInit {
       this.finished = routeProgress.finished;
       this.percentComplete = routeProgress.percentComplete;
       this.routeLength = routeProgress.routeLength;
+      this.routeName = routeProgress.routeName;
     })
   }
 
