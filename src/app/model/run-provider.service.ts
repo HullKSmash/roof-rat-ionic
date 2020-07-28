@@ -50,7 +50,7 @@ export class RunProviderService {
     return of(this.availableRoutes);
   }
 
-  getRouteInfoById(routeId: number): Observable<any> {
+/*   getRouteInfoById(routeId: number): Observable<any> {
     let routeInfo = {routeName: "", routeLength: 0};
 
     for (let route of this.availableRoutes) {
@@ -61,7 +61,7 @@ export class RunProviderService {
       }
     }
     return of(routeInfo);
-  }
+  } */
 
   startRoute(routeId: number, userId: number, routeName: string, routeLength: number): Observable<RouteProgress> {
 
@@ -127,7 +127,6 @@ export class RunProviderService {
     //For now, delete run by index in absence of ID; when DB is set up, use ID instead
     this.runHistory.splice(runIndex, 1);
     this.runHistoryChange.next(this.runHistory);
-    console.log(this.runHistory);
 
     //check for finish
     if (this.calculateDistanceLogged(this.runHistory) >= this.routeProgress.routeLength) {
@@ -211,7 +210,7 @@ export class RunProviderService {
   }
 
   calculatePercentComplete(distanceLogged: number, routeLength: number) {
-    let percentComplete = (distanceLogged/routeLength)*100;
+    let percentComplete = Math.round((distanceLogged/routeLength)*100);
     return percentComplete;
   }
   //later: distance complete, started y/n, get landmarks
