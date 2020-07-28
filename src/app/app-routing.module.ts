@@ -19,14 +19,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/route-select/route-select.module').then( m => m.RouteSelectPageModule),
     canActivate: [RouteSelectGuardService]
   }
-/**  {
-    path: 'landmark-list',
-    loadChildren: () => import('./pages/landmark-list/landmark-list.module').then( m => m.LandmarkListPageModule)
-  },
-  {
-    path: 'landmark',
-    loadChildren: () => import('./pages/landmark/landmark.module').then( m => m.LandmarkPageModule)
-  } */
 ];
 
 @NgModule({
