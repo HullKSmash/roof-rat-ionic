@@ -6,7 +6,7 @@
 
 <ion-content>
   <div id="container">
-    <p>Current route ID: {{routeProgress.routeId}}</p>
+    <p>Current route: {{ (routeProgress) ? (routeProgress.routeName) : "None" }}</p>
     <ion-button routerLink="/route-select" (click)="abandonRoute()">Abandon Route</ion-button>
   </div>
 

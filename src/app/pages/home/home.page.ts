@@ -10,18 +10,18 @@ import { RouteProgress } from 'src/app/routeProgress';
 })
 export class HomePage {
 
-  availableRoutes: Array<Route>;
-  routeProgress: RouteProgress;
+/*   availableRoutes: Array<Route>;
+  routeProgress: RouteProgress; */
 
   constructor(
-    private runProviderService: RunProviderService,
+//    private runProviderService: RunProviderService,
   ) { }
 
   ngOnInit() {
-    this.getAvailableRoutes();
+//    this.getAvailableRoutes();
   }
 
-  getAvailableRoutes() {
+  /* getAvailableRoutes() {
     //calls provider for routes
     console.log("Getting available routes");
     this.runProviderService.getAvailableRoutes()
@@ -32,10 +32,9 @@ export class HomePage {
   }
 
   startRoute(routeId: number) {
-        //*****************TODO: Add a check for route already in progress? */
     console.log("starting route");
     this.runProviderService.startRoute(routeId, 1)
     .subscribe(routeProgress => this.routeProgress = routeProgress);
     //wait to redirect until provder has responded?
-  }
+  } */
 }

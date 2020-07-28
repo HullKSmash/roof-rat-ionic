@@ -21,8 +21,23 @@ export class RunProviderService {
   routeProgressChange: Subject<RouteProgress> = new Subject<RouteProgress>();
   landmarksList: Array<Landmark>;
   landmarksData: Array<any>;
-
+/******************************************************* */
+  runHistoryChange: Subject<Array<Run>> = new Subject<Array<Run>>();
+/******************************************************* */
   constructor(private http: HttpClient) {
+    /******************************************************* */
+    this.runHistoryChange.subscribe((runHistory) =>  {
+      this.runHistory = runHistory;
+      console.log("Service run history change detected: ");
+      console.log(this.runHistory);
+    });
+
+    this.routeProgressChange.subscribe((routeProgress => {
+      this.routeProgress = routeProgress;
+      console.log("Service route progress change detected: ");
+      console.log(this.routeProgress);
+    }));
+    /******************************************************* */
   }
    //If working off local storage, make calculations about route progress here
    //Assume one route, one user; use run history to determine progress etc on the fly
@@ -48,28 +63,28 @@ export class RunProviderService {
     return of(routeInfo);
   }
 
-  startRoute(routeId: number, userId: number): Observable<RouteProgress> {
-    this.getRouteInfoById(routeId)
-      .subscribe(routeInfo => {
-        this.routeProgress = {
-          userId: userId,
-          routeId: routeId,
-          routeName: routeInfo.routeName,
-          finished: false,
-          distanceLogged: 0,
-          routeLength: routeInfo.routeLength,
-          percentComplete: 0
-        }
-      });
+  startRoute(routeId: number, userId: number, routeName: string, routeLength: number): Observable<RouteProgress> {
 
+    this.routeProgress = {
+      userId: userId,
+      routeId: routeId,
+      routeName: routeName,
+      finished: false,
+      distanceLogged: 0,
+      routeLength: routeLength,
+      percentComplete: 0
+    };
+    this.routeProgressChange.next(this.routeProgress);
     console.log(this.routeProgress);
     //send the above to an API endpoint that will store it
     //set a runHistory obj
     this.runHistory = [];
+    this.runHistoryChange.next(this.runHistory);
     //set a clean routeProgress and runHistory obj in local storage
     //Local storage can maybe be route progress + run history?  Or maybe just don't bother with local storage?
     localStorage.setItem("roofrat_routeProgress", JSON.stringify(this.routeProgress));
     localStorage.setItem("roofrat_runHistory", JSON.stringify(this.runHistory));
+    //
     console.log(this.routeProgress);
     return of(this.routeProgress);
     //Send call to server with userID and route ID so that route progress with this
@@ -82,12 +97,14 @@ export class RunProviderService {
     }
 
     let newRun = {date: date, distance: distance};
-    console.log(this.runHistory);
+//    console.log(this.runHistory);
     this.runHistory.push(newRun);
-    console.log(this.runHistory);
+    this.runHistoryChange.next(this.runHistory);
+//    console.log(this.runHistory);
     //Check for finish
     if (this.calculateDistanceLogged(this.runHistory) >= this.routeProgress.routeLength) {
       this.routeProgress = this.finishRoute(this.routeProgress);
+      this.routeProgressChange.next(this.routeProgress);
     } else {
       this.routeProgress.distanceLogged = this.calculateDistanceLogged(this.runHistory);
       this.routeProgress.percentComplete = this.calculatePercentComplete(this.routeProgress.distanceLogged, this.routeProgress.routeLength);  
@@ -109,6 +126,7 @@ export class RunProviderService {
     //move the below logic to the mock server
     //For now, delete run by index in absence of ID; when DB is set up, use ID instead
     this.runHistory.splice(runIndex, 1);
+    this.runHistoryChange.next(this.runHistory);
     console.log(this.runHistory);
 
     //check for finish
@@ -120,6 +138,7 @@ export class RunProviderService {
       this.routeProgress.distanceLogged = this.calculateDistanceLogged(this.runHistory);
       //update percentComplete
       this.routeProgress.percentComplete = this.calculatePercentComplete(this.routeProgress.distanceLogged, this.routeProgress.routeLength);
+      this.routeProgressChange.next(this.routeProgress);
     }
 
     //update local storage
@@ -145,12 +164,17 @@ export class RunProviderService {
   getRouteProgress(): Observable<RouteProgress> {
     //return routeProgress object
     //check local storage for roofrat object
-    if (localStorage.getItem("roofrat_routeProgress")) {
-      this.routeProgress = JSON.parse(localStorage.getItem("roofrat_routeProgress"));
-      return of(this.routeProgress);
+    if (!this.routeProgress) {
+      if (localStorage.getItem("roofrat_routeProgress")) {
+        this.routeProgress = JSON.parse(localStorage.getItem("roofrat_routeProgress"));
+        return of(this.routeProgress);
+      } else {
+        return of(null);
+      }
     } else {
-      return of(null);
+      return of(this.routeProgress);
     }
+
     //Get route progress from the server for this user
     //Will get a routeProgress object in return
     //Parse the object into various properties that can be returned to specific components
@@ -163,15 +187,18 @@ export class RunProviderService {
     localStorage.removeItem("roofrat_routeProgress");
     localStorage.removeItem("roofrat_runHistory");
     this.runHistory = [];
+    this.runHistoryChange.next(this.runHistory);
     this.routeProgress = null;
-    return;
+    this.routeProgressChange.next(this.routeProgress);
+//    this.getRouteProgress;
+    return this.routeProgress;
   }
 
   finishRoute(routeProgress: RouteProgress): RouteProgress {
     this.routeProgress.finished = true;
     this.routeProgress.distanceLogged = routeProgress.routeLength;
     this.routeProgress.percentComplete = 100;
-
+    this.routeProgressChange.next(this.routeProgress);
     return this.routeProgress;
   }
 

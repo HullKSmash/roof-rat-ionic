@@ -34,10 +34,10 @@ export class RouteSelectPage implements OnInit {
 //    console.log(this.availableRoutes);
   }
 
-  startRoute(routeId: number) {
+  startRoute(routeId: number, routeName: string, routeLength: number) {
         //*****************TODO: Add a check for route already in progress? */
     console.log("starting route");
-    this.runProviderService.startRoute(routeId, 1)
+    this.runProviderService.startRoute(routeId, 1, routeName, routeLength)
     .subscribe(routeProgress => this.routeProgress = routeProgress);
     //wait to redirect until provder has responded?
   }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RunProviderService } from 'src/app/model/run-provider.service';
-import { Landmark } from 'src/app/landmark';
+import { RouteProgress } from 'src/app/routeProgress';
 
 @Component({
   selector: 'app-progress',
@@ -9,6 +9,7 @@ import { Landmark } from 'src/app/landmark';
 })
 export class ProgressPage implements OnInit {
 
+  routeProgress: RouteProgress;
 
   distanceLogged: number;
   finished: Boolean;
@@ -28,12 +29,13 @@ export class ProgressPage implements OnInit {
     //if done, conditional in HTML to show "finished" experience
     //if not done, show "in progress" UI - also a conditional in HTML
     this.runProviderService.routeProgressChange.subscribe(routeProgress => {
-      this.distanceLogged = routeProgress.distanceLogged;
-      this.finished = routeProgress.finished;
-      this.percentComplete = routeProgress.percentComplete;
-      this.routeLength = routeProgress.routeLength;
+      this.routeProgress = routeProgress;
+//      this.distanceLogged = routeProgress.distanceLogged;
+//      this.finished = routeProgress.finished;
+//      this.percentComplete = routeProgress.percentComplete;
+//      this.routeLength = routeProgress.routeLength;
     });
-    this.getRouteProgress();
+//    this.getRouteProgress();
   }
 
   getRouteProgress() {
@@ -41,11 +43,12 @@ export class ProgressPage implements OnInit {
     console.log("Getting route progress");
     this.runProviderService.getRouteProgress()
     .subscribe(routeProgress => {
-      this.distanceLogged = routeProgress.distanceLogged;
-      this.finished = routeProgress.finished;
-      this.percentComplete = routeProgress.percentComplete;
-      this.routeLength = routeProgress.routeLength;
-      this.routeName = routeProgress.routeName;
+      this.routeProgress = routeProgress;
+//      this.distanceLogged = routeProgress.distanceLogged;
+//      this.finished = routeProgress.finished;
+//      this.percentComplete = routeProgress.percentComplete;
+//      this.routeLength = routeProgress.routeLength;
+//      this.routeName = routeProgress.routeName;
     })
   }
 

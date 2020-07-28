@@ -12,6 +12,8 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { RunProviderService } from 'src/app/model/run-provider.service';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],

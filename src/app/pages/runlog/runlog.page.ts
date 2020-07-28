@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Injectable } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, NgForm, FormGroupDirective } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Run } from 'src/app/run';
@@ -9,6 +9,7 @@ import { RunProviderService } from 'src/app/model/run-provider.service';
   templateUrl: './runlog.page.html',
   styleUrls: ['./runlog.page.scss'],
 })
+
 export class RunlogPage implements OnInit {
 
   runForm: FormGroup;
@@ -36,7 +37,8 @@ export class RunlogPage implements OnInit {
     this.newRunDateCtrl;
     this.newRunDistanceCtrl;
     this.checkFinish();
-    this.getRunHistory();
+    this.runProviderService.runHistoryChange.subscribe(runHistory => this.runHistory = runHistory);
+//    this.getRunHistory();
   }
 
   createForm() {
@@ -56,14 +58,17 @@ export class RunlogPage implements OnInit {
   }
 
   getRunHistory() {
-    this.runProviderService.getRunHistory()
-      .subscribe(runHistory => this.runHistory = runHistory);
-      console.log(this.runHistory);
-    return this.runHistory;
+//    this.runProviderService.getRunHistory()
+//      .subscribe(runHistory => this.runHistory = runHistory);
+//      console.log(this.runHistory);
+//    return this.runHistory;
+    return this.runProviderService.runHistory;
   }
 
   addRun(date: Date, distance: number) {
     this.runProviderService.addRun(date, distance);
+    console.log("Run history in runlog page: ");
+    console.log(this.runHistory);
   }
 
   checkFinish() {
