@@ -63,8 +63,8 @@ export class RunProviderService {
     return of(routeInfo);
   } */
 
-  startRoute(routeId: number, userId: number, routeName: string, routeLength: number): Observable<RouteProgress> {
-
+  startRoute(routeId: number, userId: number, routeName: string, routeLength: number) {
+    console.log("Setting route progress obj");
     this.routeProgress = {
       userId: userId,
       routeId: routeId,
@@ -84,9 +84,6 @@ export class RunProviderService {
     //Local storage can maybe be route progress + run history?  Or maybe just don't bother with local storage?
     localStorage.setItem("roofrat_routeProgress", JSON.stringify(this.routeProgress));
     localStorage.setItem("roofrat_runHistory", JSON.stringify(this.runHistory));
-    //
-    console.log(this.routeProgress);
-    return of(this.routeProgress);
     //Send call to server with userID and route ID so that route progress with this
   }
 
@@ -166,6 +163,7 @@ export class RunProviderService {
     if (!this.routeProgress) {
       if (localStorage.getItem("roofrat_routeProgress")) {
         this.routeProgress = JSON.parse(localStorage.getItem("roofrat_routeProgress"));
+        this.routeProgressChange.next(this.routeProgress);
         return of(this.routeProgress);
       } else {
         return of(null);
@@ -217,8 +215,6 @@ export class RunProviderService {
 
   updateLocalStorage(name: string, obj: Object) {
     let storageString = JSON.stringify(obj);
-    console.log(obj);
-    console.log(storageString);
     localStorage.setItem(name, storageString);
   }
 

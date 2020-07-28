@@ -16,7 +16,7 @@ export class LandmarkListPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.runProviderService.getRouteProgress();
+//    this.runProviderService.getRouteProgress();
 
     this.runProviderService.getLandmarksList()
       .subscribe(landmarksList => this.landmarksList = landmarksList);

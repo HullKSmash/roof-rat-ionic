@@ -25,20 +25,14 @@ export class RouteSelectPage implements OnInit {
   }
 
   getAvailableRoutes() {
-    //calls provider for routes
-    console.log("Getting available routes");
     this.runProviderService.getAvailableRoutes()
       .subscribe(routes => this.availableRoutes = routes);
-    console.log(this.availableRoutes);
-//    this.availableRoutes.forEach(route => console.log(route.length));
-//    console.log(this.availableRoutes);
   }
 
   startRoute(routeId: number, routeName: string, routeLength: number) {
         //*****************TODO: Add a check for route already in progress? */
     console.log("starting route");
-    this.runProviderService.startRoute(routeId, 1, routeName, routeLength)
-    .subscribe(routeProgress => this.routeProgress = routeProgress);
+    this.runProviderService.startRoute(routeId, 1, routeName, routeLength);
     //wait to redirect until provder has responded?
   }
 }

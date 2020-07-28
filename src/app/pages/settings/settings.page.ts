@@ -15,12 +15,13 @@ export class SettingsPage implements OnInit {
    }
 
   ngOnInit() {
+    this.runProviderService.getRouteProgress().subscribe(routeProgress => this.routeProgress = routeProgress);
     this.runProviderService.routeProgressChange.subscribe(routeProgress => this.routeProgress = routeProgress);
   }
 
-  getRouteProgress() {
+/*   getRouteProgress() {
     this.runProviderService.getRouteProgress().subscribe(progress => this.routeProgress = progress);
-  }
+  } */
 
   abandonRoute() {
     this.runProviderService.clearRouteProgress();

@@ -5,9 +5,28 @@
 </ion-header>
 
 <ion-content>
-  <div id="container">
-    <p>Current route: {{ (routeProgress) ? (routeProgress.routeName) : "None" }}</p>
+  <div class="container">
+    <h4>Current route: {{ (routeProgress) ? (routeProgress.routeName) : "None" }}</h4>
     <ion-button routerLink="/route-select" (click)="abandonRoute()">Abandon Route</ion-button>
+  </div>
+  <hr style="background: gray">
+  <div class="container">
+    <h4>About Ramble</h4>
+    <h5>Your Data:</h5>
+    <p>This application uses local storage on your device to remember you, the runs you've logged, and your progress 
+      along routes any time you access the application on the same phone or computer.  
+      If you clear your local storage, your run history and progress will be deleted.
+      <br><br>
+      This data is used only to support the functionality of the app and is not shared with any third parties.</p>
+      <br>  
+    <h5>How to Use the App:</h5>
+    <p>Upon your first visit to the app, select a route that you would like to complete.  Log the distance 
+      and date of runs that you complete under the "Run Log" tab.  As you complete runs, visit the "Route" 
+      tab to see your progress on the route and view landmarks as you pass them.  
+      <br><br>
+      Under "Settings", you may see your current route selection and abandon it at any time.  Abandoning 
+      your route will also delete your run history and all progress against the route.  You may restart 
+      the route or choose another from the run selection page.</p>
   </div>
 
 </ion-content>
