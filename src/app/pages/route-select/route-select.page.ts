@@ -34,12 +34,12 @@ export class RouteSelectPage implements OnInit {
 
   startRoute(routeId: number, routeName: string, routeLength: number) {
         //*****************TODO: Add a check for route already in progress? */
-    console.log("starting route");
     this.runProviderService.startRoute(routeId, 1, routeName, routeLength);
     //wait to redirect until provder has responded?
   }
 
   showAlert() {
+    console.log("Showing alert");
     this.alertController.create({
       header: "Before you get started...",
       subHeader: "How this app works",
