@@ -26,12 +26,16 @@
 @import "~@ionic/angular/css/flex-utils.css";
 
 ion-card-title, ion-card-subtitle {
-    margin-left: 10px;
     padding: 5px;
 }
 
-.container {
+.card-elements-container {
     margin-left: 10px;
     margin-right: 10px;
     padding: 5px;
+}
+
+.card-image>p {
+    margin-top: 0px;
+    font-size: small;
 }

@@ -181,7 +181,7 @@
                 "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/A572%2C_Mount_Pleasant_Mansion%2C_Fairmount_Park%2C_Philadelphia%2C_Pennsylvania%2C_United_States%2C_2017.jpg/1599px-A572%2C_Mount_Pleasant_Mansion%2C_Fairmount_Park%2C_Philadelphia%2C_Pennsylvania%2C_United_States%2C_2017.jpg",
                 "image_attribute": "Wikimedia",
                 "img_att_link": "https://commons.wikimedia.org/wiki/File:A572,_Mount_Pleasant_Mansion,_Fairmount_Park,_Philadelphia,_Pennsylvania,_United_States,_2017.jpg",
-                "description": "A Georgian mansion built in the 1700s by a pirate who, according to John Adams, had an arm twice shot off.  The mansion was later owned and inhabited by Benedict Arnold and Benjamin Franklin's grandnephew."
+                "description": "A Georgian mansion built in the 1700s by a pirate who, according to John Adams, had an arm twice shot off.  Does this mean his arm was shot off and reattached, or both arms were shot off? The mansion was later owned and inhabited by Benedict Arnold and Benjamin Franklin's grandnephew."
             },
             {
                 "id": 23,
@@ -278,7 +278,7 @@
                 "routeId": 2,
                 "name": "Edgar Allan Poe House",
                 "mile": 4.5,
-                "image": "hhttps://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Edal_359.jpg/1600px-Edal_359.jpg",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Edal_359.jpg/1600px-Edal_359.jpg",
                 "image_attribute": "Wikimedia",
                 "img_att_link": "https://commons.wikimedia.org/wiki/File:Edal_359.jpg",
                 "description": "Edgar Allan Poe lived in several houses over his seven years in Philadelphia, but this is the only one still standing.  Some of his most well-known works, such as The Tell-Tale Heart, were written while Poe lived in Philadelphia.  Poe lived in the house now marked as a National Historic Site along with his wife/cousin and mother-in-law/aunt (yes, you read that right) for only a year or less before moving to New York.  Their short tenure may or may not have had something to do with Poe's reputation for tardy rent payments."
@@ -289,8 +289,8 @@
                 "name": "U.S. Mint",
                 "mile": 5.5,
                 "image": "https://upload.wikimedia.org/wikipedia/commons/b/ba/Ye_Olde_Mint%2C1792.jpg",
-                "image_attribute": "",
-                "img_att_link": "",
+                "image_attribute": "Wikimedia",
+                "img_att_link": "https://commons.wikimedia.org/wiki/File:Ye_Olde_Mint,1792.jpg",
                 "description": "The Philadelphia Mint was the first mint in the U.S. and is now one of four operating facilities.  The Coinage Act of 1792 ordered the creation of the mint; Philadelphia was the nation's capital at the time, so naturally, the mint went there.  The Coinage Act also specified the dollar unit and metallic composition of each coin.  Liberty was very on trend at the time, so it also required each coin sport an 'impression emblematic of liberty'."
             },
             {
@@ -298,9 +298,9 @@
                 "routeId": 2,
                 "name": "Elfreth's Alley",
                 "mile": 5.8,
-                "image": "https://images.unsplash.com/photo-1452784444945-3f422708fe5e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60",
-                "image_attribute": "Wikimedia",
-                "img_att_link": "https://commons.wikimedia.org/wiki/File:Ye_Olde_Mint,1792.jpg",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Elfreth%27s_Alley.JPG/1920px-Elfreth%27s_Alley.JPG",
+                "image_attribute": "Mr. Kjetil Ree. - Own work, CC BY-SA 3.0",
+                "img_att_link": "https://commons.wikimedia.org/w/index.php?curid=1708717",
                 "description": "Elfreth's Alley is a small cobblestone street comprised of rare preservations of 18th-century working-class housing.  Many mansions of the same era still stand, but the less grand residential buildings have largely been demolished or rebuilt.  The oldest houses on Elfreth's Alley date back to 1703.  Their preservation is the result of a grassroots effort that began in the 1920s.  Details on dates and residents are somewhat vague, but the street was home to trade workers and several waves of immigrants."
             },
             {
