@@ -251,7 +251,7 @@
                 "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Pennsylvania_Academy_of_the_Fine_Arts_in_Philadelphia.jpg/900px-Pennsylvania_Academy_of_the_Fine_Arts_in_Philadelphia.jpg",
                 "image_attribute": "Wikimedia",
                 "img_att_link": "https://commons.wikimedia.org/wiki/File:Pennsylvania_Academy_of_the_Fine_Arts_in_Philadelphia.jpg",
-                "description": "The PAFA was the first art museum and school in the U.S., founded in 1805.  The Academy made particular contributions to women's growing involvement in art in the mid-1800s.  Women were given exclusive access to work spaces at specific times and were later allowed to work from live nude models of both genders - a controversial allowance at the time.  "
+                "description": "The PAFA was the first art museum and school in the U.S., founded in 1805.  The Academy made particular contributions to women's growing involvement in art in the mid-1800s.  Women were given exclusive access to work spaces at specific times and were later allowed to work from live nude models of both genders - a controversial allowance at the time."
             },
             {
                 "id": 30,
@@ -261,7 +261,7 @@
                 "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Reading_Terminal_Market.jpg/1600px-Reading_Terminal_Market.jpg",
                 "image_attribute": "Wikimedia",
                 "img_att_link": "https://commons.wikimedia.org/wiki/File:Reading_Terminal_Market.jpg",
-                "description": "Description goes here"
+                "description": "Reading (pronounced more like 'redding') Terminal was constructed to house a train depot and station as well as the company headquarters for the Philadelphia and Reading Railway.  There was a long-standing open-air market already in operation in 1889 when the company made its plans for the building, and many residents complained about the market's dissolution.  To compromise, the railroad agreed to purchase the market as well and relocate it to one end of the building, ultimately requiring the trainshed and tracks to be placed one level above the street."
             },
             {
                 "id": 31,
@@ -271,7 +271,7 @@
                 "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/African_American_Museum_in_Philadelphia.jpg/1600px-African_American_Museum_in_Philadelphia.jpg",
                 "image_attribute": "Wikimedia",
                 "img_att_link": "https://commons.wikimedia.org/wiki/File:African_American_Museum_in_Philadelphia.jpg",
-                "description": "Description goes here"
+                "description": "The AAMP was the first Black American museum funded and built by a municipality.  The museum opened in 1976 and is located a few blocks from the iconic Liberty Bell.  The collection of more than 750,000 objects includes memorabilia and artifacts of the Philadelphia Black Panthers, the Civil Rights movement, and iconic Black Americans."
             },
             {
                 "id": 32,
@@ -378,9 +378,9 @@
                 "routeId": 2,
                 "name": "Wilson Eyre House",
                 "mile": 8.5,
-                "image": "https://images.unsplash.com/photo-1452784444945-3f422708fe5e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60",
-                "image_attribute": "",
-                "img_att_link": "",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/e/e5/WilsonEyre.jpg",
+                "image_attribute": "Wikimedia",
+                "img_att_link": "https://en.wikipedia.org/wiki/Wilson_Eyre#/media/File:WilsonEyre.jpg",
                 "description": "Architect Wilson Eyre lived in this nondescript historical landmark house from 1909 until 1944.  He didn't design or build it, but he did add the third story to it.  Eyre designed sprawling yet informal country houses, and later other buildings such as the Penn Museum.  Some of his basic components seem to have become building blocks for Frank Lloyd Wright's work, which rose to pominence shortly after Eyre's."
             },
             {
@@ -388,20 +388,20 @@
                 "routeId": 2,
                 "name": "Academy of Music",
                 "mile": 8.9,
-                "image": "https://images.unsplash.com/photo-1452784444945-3f422708fe5e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60",
-                "image_attribute": "",
-                "img_att_link": "",
-                "description": "Description goes here"
+                "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/2013_Academy_of_Music_from_south.jpg/2560px-2013_Academy_of_Music_from_south.jpg",
+                "image_attribute": "By Beyond My Ken - Own work, CC BY-SA 4.0",
+                "img_att_link": "https://commons.wikimedia.org/w/index.php?curid=26417395",
+                "description": "The American Academy of Music is the oldest opera house in the U.S. still used for its original purpose.  The Academy was finished in 1857 and today is home to the Pennsylvania Ballet and the Opera Philadelphia."
             },
             {
                 "id": 44,
                 "routeId": 2,
                 "name": "City Hall",
                 "mile": 9,
-                "image": "https://images.unsplash.com/photo-1517009572053-93fb56dfef49?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
-                "image_attribute": "",
-                "img_att_link": "",
-                "description": "Description goes here"
+                "image": "https://images.unsplash.com/photo-1517009572053-93fb56dfef49?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60",
+                "image_attribute": "Leo Serrat on Unsplash",
+                "img_att_link": "https://unsplash.com/@leoserrat",
+                "description": "The iconic statue of William Penn sits atop City Hall.  The building was the tallest habitable in the world from its creation in 1894 until 1908.  An informal agreement limited the height of buildings in City Center to be no taller than William Penn's hat, until the city's first skyscraper was constructed at One Liberty Place in 1986 that surpassed Penn's head by several stories."
             }
         ],
         "route3": [
