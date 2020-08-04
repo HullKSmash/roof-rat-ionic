@@ -38,6 +38,7 @@ export class RunlogPage implements OnInit {
     this.newRunDistanceCtrl;
     this.checkFinish();
     this.runProviderService.runHistoryChange.subscribe(runHistory => this.runHistory = runHistory);
+    this.runProviderService.getRunHistory().subscribe(runHistory => this.runHistory = runHistory);
 //    this.getRunHistory();
   }
 
