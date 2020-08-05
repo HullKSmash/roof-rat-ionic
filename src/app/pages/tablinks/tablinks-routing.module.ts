@@ -17,7 +17,7 @@ if (localStorage.getItem("roofrat_routeProgress")) {
 
 const routes: Routes = [
   {
-    path: 'tablinks',
+    path: '',
     component: TablinksPage,
     children: [
       {
