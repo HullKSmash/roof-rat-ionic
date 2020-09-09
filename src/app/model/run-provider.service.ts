@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, Subject} from 'rxjs';
 import { Run } from 'src/app/run';
-import { Route } from 'src/app/route';
+import { RouteService } from 'src/app/services/route.service';
 import { RouteProgress } from 'src/app/routeProgress';
 import { Landmark } from 'src/app/landmark';
 import * as landmarksData from 'src/app/model/data/landmarksData.json';
@@ -15,10 +15,10 @@ import { RouteSelectPageRoutingModule } from '../pages/route-select/route-select
 export class RunProviderService {
 
 
-  availableRoutes: Array<Route>;
+  availableRoutes: Array<RouteService>;
   runHistory: Array<Run>;
-  routeProgress: RouteProgress;
-  routeProgressChange: Subject<RouteProgress> = new Subject<RouteProgress>();
+  routeProgress: RouteProgress;///////////////////////Moved to route class
+  routeProgressChange: Subject<RouteProgress> = new Subject<RouteProgress>();///////////////////////Moved to route class
   landmarksList: Array<Landmark>;
   landmarksData: Array<any>;
 /******************************************************* */
@@ -43,7 +43,7 @@ export class RunProviderService {
    //Assume one route, one user; use run history to determine progress etc on the fly
    //If working off the server, the server will make all those calculations and return them via API
 
-  getAvailableRoutes(): Observable<Array<Route>> {
+  getAvailableRoutes(): Observable<Array<RouteService>> {
     this.availableRoutes = [];
     (routesData as any).default.forEach(route => this.availableRoutes.push(route));
     console.log(this.availableRoutes);
@@ -85,6 +85,12 @@ export class RunProviderService {
     localStorage.setItem("roofrat_routeProgress", JSON.stringify(this.routeProgress));
     localStorage.setItem("roofrat_runHistory", JSON.stringify(this.runHistory));
     //Send call to server with userID and route ID so that route progress with this
+  }
+
+  setRouteProgress(routeProgress: RouteProgress) {
+    this.routeProgress = routeProgress;
+    this.routeProgressChange.next(this.routeProgress);
+    localStorage.setItem("roofrat_routeProgress", JSON.stringify(this.routeProgress));
   }
 
   addRun(date: Date, distance: number):Observable<RouteProgress> {
@@ -152,6 +158,7 @@ export class RunProviderService {
         return of(this.runHistory);
       } else {
          this.runHistory = [];
+         this.runHistoryChange.next(this.runHistory);
          this.updateLocalStorage("roofrat_runHistory", this.runHistory);
          return of(this.runHistory);
       }

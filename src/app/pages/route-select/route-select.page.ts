@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RunProviderService } from 'src/app/model/run-provider.service';
-import { Route } from 'src/app/route';
+import { RouteService } from 'src/app/services/route.service';
 import { RouteProgress } from 'src/app/routeProgress';
 import { HttpClient } from '@angular/common/http';
 import { AlertController } from '@ionic/angular';
@@ -9,17 +9,19 @@ import { AlertController } from '@ionic/angular';
   selector: 'app-route-select',
   templateUrl: './route-select.page.html',
   styleUrls: ['./route-select.page.scss'],
+  providers: [RouteService]
 })
 export class RouteSelectPage implements OnInit {
 
-  availableRoutes: Array<Route>;
+  availableRoutes: Array<RouteService>;
   routeProgress: RouteProgress;
-  testRoute: Route;
+  testRoute: RouteService;
 
   constructor(
     private runProviderService: RunProviderService,
     private http: HttpClient,
-    public alertController: AlertController
+    public alertController: AlertController,
+    private routeProvider: RouteService
   ) { }
 
   ngOnInit() {
@@ -29,12 +31,20 @@ export class RouteSelectPage implements OnInit {
 
   getAvailableRoutes() {
     this.runProviderService.getAvailableRoutes()
-      .subscribe(routes => this.availableRoutes = routes);
+      .subscribe(routes => {
+        this.availableRoutes = [];
+        routes.forEach( route => {
+          var newRoute = Object.assign(new RouteService(), route);
+          this.availableRoutes.push(newRoute);
+        });
+        console.log(this.availableRoutes);
+      })
   }
 
-  startRoute(routeId: number, routeName: string, routeLength: number) {
+  startRoute(route: RouteService) {
         //*****************TODO: Add a check for route already in progress? */
-    this.runProviderService.startRoute(routeId, 1, routeName, routeLength);
+        route.start(1);
+//    this.runProviderService.startRoute(routeId, 1, routeName, routeLength);
     //wait to redirect until provder has responded?
   }
 
