@@ -3,6 +3,7 @@ import { FormGroup, FormControl, FormBuilder, Validators, NgForm, FormGroupDirec
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Run } from 'src/app/run';
 import { RunProviderService } from 'src/app/model/run-provider.service';
+import { RouteService } from 'src/app/services/route.service';
 
 @Component({
   selector: 'app-runlog',
@@ -26,7 +27,8 @@ export class RunlogPage implements OnInit {
   
   constructor(    
     private fb: FormBuilder,
-    private runProviderService: RunProviderService
+    private runProviderService: RunProviderService,
+    private routeService: RouteService
     ) {
       this.createForm();
       this.runHistory;
@@ -73,7 +75,7 @@ export class RunlogPage implements OnInit {
   }
 
   checkFinish() {
-    this.runProviderService.getRouteProgress().
+    this.routeService.getRouteProgress().
       subscribe(routeProgress =>  {
         if (!routeProgress) {
           this.finished = false;

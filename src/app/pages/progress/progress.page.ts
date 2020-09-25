@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RunProviderService } from 'src/app/model/run-provider.service';
 import { RouteProgress } from 'src/app/routeProgress';
+import { RouteService } from 'src/app/services/route.service';
 
 @Component({
   selector: 'app-progress',
@@ -17,23 +18,29 @@ export class ProgressPage implements OnInit {
   routeLength: number;
   routeName: string; */
 
-  constructor(private runProviderService: RunProviderService) {}
+  constructor(
+    private runProviderService: RunProviderService,
+    private routeService: RouteService
+    ) {}
 
   ngOnInit() {
-    this.runProviderService.getRouteProgress().subscribe(routeProgress => this.routeProgress = routeProgress);
-    
-    this.runProviderService.routeProgressChange.subscribe(routeProgress => {
+    this.routeService.getRouteProgress().subscribe(routeProgress => this.routeProgress = routeProgress);
+
+    this.routeService.routeProgressChange.subscribe(routeProgress => {
       this.routeProgress = routeProgress;
     });
+
+    console.log("Progress page route progress: ");
+    console.log(this.routeProgress);
   }
 
-/*   getRouteProgress() {
+  getRouteProgress() {
     //Get progress values to render on UI
-    this.runProviderService.getRouteProgress()
+    this.routeService.getRouteProgress()
     .subscribe(routeProgress => {
       this.routeProgress = routeProgress;
     })
-  } */
+  }
 
   restartRoute() {
     this.runProviderService.clearRouteProgress();

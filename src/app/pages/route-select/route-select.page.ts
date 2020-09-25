@@ -21,8 +21,10 @@ export class RouteSelectPage implements OnInit {
     private runProviderService: RunProviderService,
     private http: HttpClient,
     public alertController: AlertController,
-    private routeProvider: RouteService
-  ) { }
+    private routeService: RouteService
+  ) {
+    //this.routeService.setRunProviderService(this.runProviderService);
+   }
 
   ngOnInit() {
     this.getAvailableRoutes();
@@ -30,14 +32,15 @@ export class RouteSelectPage implements OnInit {
   }
 
   getAvailableRoutes() {
-    this.runProviderService.getAvailableRoutes()
+//    this.runProviderService.getAvailableRoutes()
+    this.routeService.getAvailableRoutes()
       .subscribe(routes => {
         this.availableRoutes = [];
         routes.forEach( route => {
           var newRoute = Object.assign(new RouteService(), route);
           this.availableRoutes.push(newRoute);
         });
-        console.log(this.availableRoutes);
+//        console.log(this.availableRoutes);
       })
   }
 
@@ -49,7 +52,6 @@ export class RouteSelectPage implements OnInit {
   }
 
   showAlert() {
-    console.log("Showing alert");
     this.alertController.create({
       header: "Before you get started...",
       subHeader: "How this app works",

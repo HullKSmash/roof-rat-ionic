@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RunProviderService } from 'src/app/model/run-provider.service';
+import { RouteService } from 'src/app/services/route.service';
 import { RouteProgress } from 'src/app/routeProgress';
 
 @Component({
@@ -11,12 +12,15 @@ export class SettingsPage implements OnInit {
 
   routeProgress: RouteProgress;
 
-  constructor(private runProviderService: RunProviderService) {
+  constructor(
+    private runProviderService: RunProviderService,
+    private routeService : RouteService
+    ) {
    }
 
   ngOnInit() {
-    this.runProviderService.getRouteProgress().subscribe(routeProgress => this.routeProgress = routeProgress);
-    this.runProviderService.routeProgressChange.subscribe(routeProgress => this.routeProgress = routeProgress);
+    this.routeService.getRouteProgress().subscribe(routeProgress => this.routeProgress = routeProgress);
+    this.routeService.routeProgressChange.subscribe(routeProgress => this.routeProgress = routeProgress);
   }
 
 /*   getRouteProgress() {
@@ -24,6 +28,6 @@ export class SettingsPage implements OnInit {
   } */
 
   abandonRoute() {
-    this.runProviderService.clearRouteProgress();
+    this.routeService.clearRouteProgress();
   }
 }
