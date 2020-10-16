@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild, Injectable } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, Validators, NgForm, FormGroupDirective } from '@angular/forms';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators, NgForm } from '@angular/forms';
 import { Run } from 'src/app/run';
 import { RunProviderService } from 'src/app/model/run-provider.service';
 import { RouteService } from 'src/app/services/route.service';
@@ -54,24 +53,17 @@ export class RunlogPage implements OnInit {
 
   onSubmit() {
     // Add run and reset form on submission
-    console.log("Submitted:  " + this.runForm.value.newRunDateCtrl.toString() + this.runForm.value.newRunDistanceCtrl);
     this.addRun(this.runForm.value.newRunDateCtrl, this.runForm.value.newRunDistanceCtrl);
     this.runForm.reset();
     this.formDirective.resetForm();
   }
 
   getRunHistory() {
-//    this.runProviderService.getRunHistory()
-//      .subscribe(runHistory => this.runHistory = runHistory);
-//      console.log(this.runHistory);
-//    return this.runHistory;
     return this.runProviderService.runHistory;
   }
 
   addRun(date: Date, distance: number) {
     this.runProviderService.addRun(date, distance);
-    console.log("Run history in runlog page: ");
-    console.log(this.runHistory);
   }
 
   checkFinish() {
@@ -88,7 +80,6 @@ export class RunlogPage implements OnInit {
   deleteRun(runIndex) {
     //send the index of the run - eventually these will have an ID associated with them
     //delete it by index
-    console.log(runIndex);
     this.runProviderService.deleteRun(runIndex);
   }
 

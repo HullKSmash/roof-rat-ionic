@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RunProviderService } from 'src/app/model/run-provider.service';
+import { RouteService } from 'src/app/services/route.service';
 import { Landmark } from 'src/app/landmark';
 
 @Component({
@@ -13,16 +14,19 @@ export class LandmarkPage implements OnInit {
   landmarkId: number;
   landmark: Landmark;
 
-  constructor(private route: ActivatedRoute, 
-    private RunProviderService: RunProviderService) { }
+  constructor(
+    private route: ActivatedRoute, 
+    private RunProviderService: RunProviderService,
+    private routeService: RouteService
+    ) { }
 
   ngOnInit() {
      this.route.params.subscribe(params => {
-      console.log(params.id);
-    this.RunProviderService.getLandmark(params.id).subscribe(landmark => {
+//      console.log(params.id);
+    this.routeService.getLandmark(params.id).subscribe(landmark => {
         this.landmark = landmark;
       });
-      console.log(this.landmark);
+//      console.log(this.landmark);
     });
 
     //In server/API land, get landmark by ID in the query

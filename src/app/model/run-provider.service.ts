@@ -24,7 +24,6 @@ export class RunProviderService {
   http: HttpClient;
 
   constructor(private routeService: RouteService) {
-    /******************************************************* */
     this.runHistoryChange.subscribe((runHistory) =>  {
       this.runHistory = runHistory;
     });
@@ -32,7 +31,6 @@ export class RunProviderService {
     this.routeService.routeProgressChange.subscribe((routeProgress => {
       this.routeProgress = routeProgress;
     }));
-    /******************************************************* */
   }
    //If working off local storage, make calculations about route progress here
    //Assume one route, one user; use run history to determine progress etc on the fly
@@ -78,11 +76,6 @@ export class RunProviderService {
          return of(this.runHistory);
       }
   }
-//Deprecate this and use route service
-  getRouteProgress() {
-    //return routeProgress object
-    this.routeService.getRouteProgress().subscribe(routeProgress => this.routeProgress = routeProgress);
-    }
 
   clearRouteProgress() {
     localStorage.removeItem("roofrat_runHistory");
@@ -102,41 +95,5 @@ export class RunProviderService {
   updateLocalStorage(name: string, obj: Object) {
     let storageString = JSON.stringify(obj);
     localStorage.setItem(name, storageString);
-  }
-
-  getLandmarksList(): Observable<any> {
-    //update to call API with route ID and distance
-    //Split off returning this list without needing a server call/fresh calculation 
-    // (user viewing landmarks without new progress) vs. 
-    //  needing to pull it fresh (user logs a new run)
-    this.landmarksList = [];
-    let routeIdentifier = "route" + this.routeProgress.routeId;
-    //iterate over landmarks list, adding each with mile < distance logged to this array
-    (landmarksData as any).default[0][routeIdentifier].forEach(landmark => {
-      if (landmark.mile <= this.routeProgress.distanceLogged) {
-        this.landmarksList.push(landmark);
-      }
-    });
-    //Sort landmarks by mile
-    this.landmarksList.sort((a, b) => {
-      return a.mile - b.mile;
-    });
-    return of(this.landmarksList);
-  }
-
-  getLandmark(landmarkId): Observable<Landmark> {
-    //Need to consider scenarios where routeProgress hasn't been instantiated - could this happen when a user closes the window & reopens?
-    //Should I run this as part of the app init somehow?
-    console.log(landmarkId);
-    let chosenLandmark: Landmark;
-    let routeIdentifier = "route" + this.routeProgress.routeId;
-    console.log(routeIdentifier);
-    (landmarksData as any).default[0][routeIdentifier].forEach(landmark => {
-      if (landmark.id == landmarkId) {
-        chosenLandmark = landmark;
-        return of(chosenLandmark);
-      }
-    });
-    return of(chosenLandmark);
   }
 }

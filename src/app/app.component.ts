@@ -17,7 +17,7 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     public runProviderService: RunProviderService,
-    public routeService: RouteService
+    public routeService: RouteService,
   ) {
     this.initializeApp();
     this.routeService.setRunProviderService(this.runProviderService);

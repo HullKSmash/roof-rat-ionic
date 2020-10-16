@@ -4,6 +4,8 @@ import { Subject, Observable, of } from 'rxjs';
 import { Run } from 'src/app/run';
 import * as routesData  from 'src/app/model/data/routesData.json';
 import { RunProviderService } from 'src/app/model/run-provider.service';
+import { Landmark } from 'src/app/landmark';
+import * as landmarksData from 'src/app/model/data/landmarksData.json';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +13,7 @@ import { RunProviderService } from 'src/app/model/run-provider.service';
 export class RouteService {
 
   runProviderService: any;
+  routeService: any;
 
   id: number;
   name: string;
@@ -23,6 +26,9 @@ export class RouteService {
   routeProgress: RouteProgress;
   routeProgressChange: Subject<RouteProgress> = new Subject<RouteProgress>();
 
+  landmarksList: any;
+  landmarksListChange: Subject<Array<any>> = new Subject<Array<any>>();
+
   runHistory: Array<Run>;
 
   constructor() {
@@ -34,26 +40,28 @@ export class RouteService {
 
     this.routeProgressChange.subscribe((routeProgress => {
       this.routeProgress = routeProgress;
+//      console.log("Route service updated progress object");
     }));
 
   }
 
   setRunProviderService(runProviderService) {
     this.runProviderService = runProviderService;
-    console.log('Set run provider service');
-    console.log(this.runProviderService.typeof);
   }
+
+ // setLandmarkService(landmarkService) {
+ //   this.landmarkService = landmarkService;
+ // }
 
   getAvailableRoutes(): Observable<Array<RouteService>> {
     this.availableRoutes = [];
     (routesData as any).default.forEach(route => this.availableRoutes.push(route));
-//    console.log(this.availableRoutes);
     return of(this.availableRoutes);
   }
 
   start(userId: number) {
-    console.log("Setting route progress obj");
-    this.routeProgress = {
+//    console.log("Setting route progress obj");
+/*     this.routeProgress = {
       userId: userId,
       routeId: this.id,
       routeName: this.name,
@@ -61,19 +69,29 @@ export class RouteService {
       distanceLogged: 0,
       routeLength: this.length,
       percentComplete: 0
-    };
+    }; */
+    this.routeProgressChange.next(this.routeProgress = {
+      userId: userId,
+      routeId: this.id,
+      routeName: this.name,
+      finished: false,
+      distanceLogged: 0,
+      routeLength: this.length,
+      percentComplete: 0
+    });
 
     this.runHistory = [];
 
     localStorage.setItem("roofrat_routeProgress", JSON.stringify(this.routeProgress));
-    this.routeProgressChange.next(this.routeProgress);
     localStorage.setItem("roofrat_runHistory", JSON.stringify(this.runHistory));
+//    this.getRouteProgress();
   }
 
   finish() {
     this.routeProgress.finished = true;
     this.routeProgress.percentComplete = 100;
     this.routeProgressChange.next(this.routeProgress);
+    localStorage.setItem("roofrat_routeProgress", JSON.stringify(this.routeProgress));
     return this.routeProgress;
   }
 
@@ -84,7 +102,9 @@ export class RouteService {
     } else {
       this.routeProgress.percentComplete = this.calculatePercentComplete(distance);
       this.routeProgressChange.next(this.routeProgress);
+      localStorage.setItem("roofrat_routeProgress", JSON.stringify(this.routeProgress));
     }
+    
     return of(this.routeProgress);
   }
 
@@ -94,7 +114,7 @@ export class RouteService {
   }
 
   getRouteProgress(): Observable<RouteProgress> {
-    if (!this.routeProgress) {
+    //if (!this.routeProgress) {
       if (localStorage.getItem("roofrat_routeProgress")) {
         this.routeProgress = JSON.parse(localStorage.getItem("roofrat_routeProgress"));
         this.routeProgressChange.next(this.routeProgress);
@@ -102,22 +122,49 @@ export class RouteService {
       } else {
         return of(null);
       }
-    } else {
-      return of(this.routeProgress);
-    }
   }
 
   clearRouteProgress() {
     localStorage.removeItem("roofrat_routeProgress");
-//    this.runHistory = this.runProviderService.clearRouteProgress();
-//    this.runHistoryChange.next(this.runHistory);
     this.routeProgress = null;
     this.routeProgressChange.next(this.routeProgress);
     this.runProviderService.clearRouteProgress();
-//    this.getRouteProgress;
     return this.routeProgress;
   }
 
-  //When a run is added, it needs to be updated here
+  getLandmarksList(): Observable<any> {
+    //update to call API with route ID and distance
+    //Split off returning this list without needing a server call/fresh calculation 
+    // (user viewing landmarks without new progress) vs. 
+    //  needing to pull it fresh (user logs a new run)
+    this.landmarksList = [];
+    let routeIdentifier = "route" + this.routeProgress.routeId;
+    //iterate over landmarks list, adding each with mile < distance logged to this array
+    (landmarksData as any).default[0][routeIdentifier].forEach(landmark => {
+      if (landmark.mile <= this.routeProgress.distanceLogged) {
+        this.landmarksList.push(landmark);
+      }
+    });
+    //Sort landmarks by mile
+    this.landmarksList.sort((a, b) => {
+      return a.mile - b.mile;
+    });
+    this.landmarksListChange.next(this.landmarksList);
+    return of(this.landmarksList);
+  }
+
+  getLandmark(landmarkId): Observable<Landmark> {
+    //Need to consider scenarios where routeProgress hasn't been instantiated - could this happen when a user closes the window & reopens?
+    //Should I run this as part of the app init somehow?
+    let chosenLandmark: Landmark;
+    let routeIdentifier = "route" + this.routeProgress.routeId;
+    (landmarksData as any).default[0][routeIdentifier].forEach(landmark => {
+      if (landmark.id == landmarkId) {
+        chosenLandmark = landmark;
+        return of(chosenLandmark);
+      }
+    });
+    return of(chosenLandmark);
+  }
 
 }

@@ -12,26 +12,16 @@ export class ProgressPage implements OnInit {
 
   routeProgress: RouteProgress;
 
-/*   distanceLogged: number;
-  finished: Boolean;
-  percentComplete: number;
-  routeLength: number;
-  routeName: string; */
-
   constructor(
     private runProviderService: RunProviderService,
     private routeService: RouteService
     ) {}
 
   ngOnInit() {
-    this.routeService.getRouteProgress().subscribe(routeProgress => this.routeProgress = routeProgress);
-
+    this.getRouteProgress();
     this.routeService.routeProgressChange.subscribe(routeProgress => {
       this.routeProgress = routeProgress;
     });
-
-    console.log("Progress page route progress: ");
-    console.log(this.routeProgress);
   }
 
   getRouteProgress() {
@@ -42,8 +32,8 @@ export class ProgressPage implements OnInit {
     })
   }
 
-  restartRoute() {
+/*   restartRoute() {
     this.runProviderService.clearRouteProgress();
-  }
+  } */
 
 }
